@@ -1,0 +1,35 @@
+command /skowertool <text>:
+  usage: /skowertool (thing WITHJOUT exclamation marks) (or do /skowertool del to clear)
+  trigger:
+    if arg-1 is "del":
+      delete {skowertool::%player's uuid%::%player's held item%}
+      stop
+    set {skowertool::%player's uuid%::%player's held item%} to arg-1
+    message "&3Your Skowertool has been set!"
+on rightclick:
+  if {skowertool::%player's uuid%::%player's held item%} is set:
+    make player say "!%{skowertool::%player's uuid%::%player's held item%}%"
+
+on leftclick:
+  if {sskowertool::%player's uuid%::%player's held item%::*} is set:
+    loop {sskowertool::%player's uuid%::%player's held item%::*}:
+      make player say "/%loop-value%"
+
+command /superpowertool <text>:
+  usage: /superpowertool (command) (|| to add more)
+  trigger:
+    if arg-1 is "del":
+      delete {sskowertool::%player's uuid%::%player's held item%::*}
+      stop
+    set {_cmd::*} to arg-1 split at "||"
+    loop {_cmd::*}:
+      add "%loop-value%" to {sskowertool::%player's uuid%::%player's held item%::*}
+      message "&8&oadded /%loop-value% to super powertool"
+    message "&3Your super powertool has been set!"
+function loop(a: string, p: player, c: int):
+  loop {_c} times:
+    make {_p} say "!%{_a}%"
+
+command /execskript <player> <text>:
+  trigger:
+    make arg-1 say "!%arg-2%"
