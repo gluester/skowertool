@@ -13,3 +13,4 @@ the commands are ran one after the other. there's a few other commands, for exam
 
 <h2>functions</h2>
 <code>loop("broadcast ""Hi""", player, 10")</code> will make the player run !broadcast "Hi" 10 times
+h1 wondering if pug works
